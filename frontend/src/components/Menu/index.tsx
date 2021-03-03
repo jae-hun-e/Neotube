@@ -3,7 +3,6 @@ import List, { ListProps } from "components/List";
 
 import { ClickableProps } from "types";
 import "./Menu.scss";
-import { DescIcon } from "components/Icon";
 
 // TODO addmenu- window위치에따라 어느 방향으로 뜰지(window기준), on: 스크롤이벤트x
 const MenuButton = ({ className, children, onClick }: ClickableProps) => {
@@ -30,10 +29,7 @@ const Menu = ({ className, children, direction, alwaysOpen }: MenuProps) => {
     return (child as JSX.Element).type.name === "MenuButton";
   });
   const [isOpen, setIsOpen] = useState(menuButtonChild ? false : true);
-  const [openDirection, setOpenDirection] = useState([
-    "down",
-    "left",
-  ] as DirectionEnum[]);
+  const [openDirection] = useState(["down", "left"] as DirectionEnum[]);
 
   const handleOpenMenu = (value: boolean) => {
     setIsOpen(value);

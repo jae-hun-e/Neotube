@@ -31,6 +31,7 @@ const VideoContainer = (props: VideoContainerProps) => {
 
   // reset videoList using props
   useEffect(() => {
+    console.log("initial videoList prop is", props.videoList);
     setVideoList(props.videoList);
   }, [props.videoList]);
 
@@ -39,8 +40,8 @@ const VideoContainer = (props: VideoContainerProps) => {
     if (loadVideo === true) {
       console.log("get additional video");
       myFetch(`${config.APIServer}/browse/`).then((res) => {
-        console.log("add video", res.jsonBody);
-        setVideoList((vl) => vl.concat(res.jsonBody.video));
+        console.log("add video", res.parsedBody);
+        setVideoList((vl) => vl.concat(res.parsedBody.results));
         setLoadVideo(false);
       });
     }

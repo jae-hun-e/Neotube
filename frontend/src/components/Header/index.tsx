@@ -13,6 +13,7 @@ import "./Header.scss";
 
 const Header = () => {
   const user = useContext(UserContext);
+  console.log("in header, user info is", user);
 
   return (
     <header>
@@ -50,7 +51,7 @@ const Header = () => {
                 alt="아바타 이미지"
                 height="32"
                 width="32"
-                src={`${config.APIServer}/identicon/image/${user.profile.id}`}
+                src={`${config.APIServer}/identicon/image/${user.profile.user_id}`}
               />
             </Icon>
           ) : (
